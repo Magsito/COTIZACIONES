@@ -1,0 +1,395 @@
+/* Variables de Color */
+:root {
+    --primary-blue: #2a419f;
+    --light-blue: #d1e1fa;
+    --text-dark: #333;
+    --bg-gray: #f5f7fa;
+    --border-color: #ddd;
+}
+
+/* Reset Básico */
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    font-family: 'Arial', sans-serif;
+}
+
+body {
+    background-color: var(--bg-gray);
+    color: var(--text-dark);
+}
+
+/* Layout Principal */
+.app-layout {
+    display: flex;
+    min-height: 100vh;
+    padding: 20px;
+    gap: 20px;
+}
+
+/* Panel de Control */
+.control-panel {
+    width: 350px;
+    background: white;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+    height: fit-content;
+}
+
+.control-panel h1 {
+    font-size: 1.5rem;
+    color: var(--primary-blue);
+    margin-bottom: 20px;
+}
+
+.form-section {
+    margin-bottom: 25px;
+    padding-bottom: 15px;
+    border-bottom: 1px solid var(--border-color);
+}
+
+.form-section h2 {
+    font-size: 1.1rem;
+    margin-bottom: 15px;
+    color: var(--text-dark);
+}
+
+.form-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 10px;
+}
+
+.input-group {
+    display: flex;
+    flex-direction: column;
+}
+
+.input-group.full-width {
+    grid-column: span 2;
+}
+
+.input-group label {
+    font-size: 0.85rem;
+    margin-bottom: 4px;
+    font-weight: bold;
+}
+
+input, select, textarea {
+    padding: 8px;
+    border: 1px solid var(--border-color);
+    border-radius: 4px;
+    font-size: 0.9rem;
+}
+
+input:focus, select:focus, textarea:focus {
+    outline: none;
+    border-color: var(--primary-blue);
+    box-shadow: 0 0 0 2px var(--light-blue);
+}
+
+button {
+    padding: 10px 15px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    font-weight: bold;
+    width: 100%;
+    margin-top: 10px;
+    transition: background 0.2s;
+}
+
+.btn-primary {
+    background: var(--primary-blue);
+    color: white;
+}
+
+.btn-primary:hover {
+    background: #1e307a;
+}
+
+.btn-success {
+    background: #28a745;
+    color: white;
+    font-size: 1.1rem;
+}
+
+.btn-success:hover {
+    background: #218838;
+}
+
+.hidden {
+    display: none !important;
+}
+
+/* Panel de Vista Previa (PDF) */
+.preview-panel {
+    flex-grow: 1;
+    display: flex;
+    justify-content: center;
+    overflow-x: auto;
+}
+
+/* -------------------------------------
+   ESTILOS ESPECÍFICOS DEL DOCUMENTO PDF 
+   ------------------------------------- */
+.pdf-document {
+    width: 794px; /* A4 width en pixels (approx 210mm) */
+    min-height: 1123px; /* A4 height */
+    background: white;
+    padding: 40px;
+    box-shadow: 0 0 10px rgba(0,0,0,0.1);
+    position: relative;
+}
+
+.pdf-header {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 10px;
+}
+
+.company-info-area {
+    display: flex;
+    gap: 15px;
+}
+
+.logo-box img {
+    max-width: 150px;
+    max-height: 80px;
+    object-fit: contain;
+}
+
+.company-details h2 {
+    font-size: 16px;
+    margin-bottom: 5px;
+    line-height: 1.2;
+}
+
+.company-details p {
+    font-size: 10px;
+    margin-bottom: 2px;
+}
+
+.quote-meta-area {
+    width: 300px;
+}
+
+.quote-title {
+    text-align: center;
+    font-weight: bold;
+    font-size: 18px;
+    border: 2px solid black;
+    padding: 5px;
+    margin-bottom: 10px;
+    letter-spacing: 2px;
+}
+
+.meta-table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 10px;
+}
+
+.meta-table td {
+    border: 1px solid black;
+    padding: 3px 5px;
+}
+
+.meta-table td:first-child {
+    text-align: right;
+    width: 60%;
+}
+
+.meta-table td:last-child {
+    text-align: center;
+}
+
+/* Barra Cliente */
+.client-bar {
+    background: var(--primary-blue);
+    color: white;
+    display: flex;
+    justify-content: space-between;
+    padding: 8px 10px;
+    font-size: 11px;
+    font-weight: bold;
+    margin-bottom: 0;
+}
+
+.client-total-label {
+    width: 13%;
+    text-align: center;
+}
+
+/* Tabla de Items */
+.items-table-container {
+    border: 1px solid black;
+    border-top: none;
+    min-height: 400px; /* Para asegurar que el PDF se vea largo */
+}
+
+.items-table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 10px;
+}
+
+.items-table th {
+    background: #5a81ce; /* Un azul intermedio o podemos usar el especificado */
+    color: white;
+    padding: 8px 5px;
+    text-align: center;
+    border: 1px solid black;
+}
+
+.items-table td {
+    border-right: 1px solid black;
+    border-left: 1px solid black;
+    padding: 5px;
+    vertical-align: top;
+}
+
+.items-table td.center { text-align: center; }
+.items-table td.right { text-align: right; }
+
+/* Filas alternas */
+.items-table tbody tr:nth-child(even) {
+    background-color: var(--light-blue);
+}
+
+.items-table tbody tr {
+    height: 30px; /* Altura mínima por fila */
+}
+
+/* Eliminar borde inferior de la última celda si queremos que se vea continuo, pero dejaremos el height del contenedor */
+
+/* Área de Totales */
+.totals-area {
+    display: flex;
+    border-left: 1px solid black;
+    border-right: 1px solid black;
+    border-bottom: 1px solid black;
+}
+
+.empty-space {
+    flex-grow: 1;
+    border-right: 1px solid black;
+}
+
+.totals-table-wrapper {
+    width: 23%; /* Impuesto + vacio aprox */
+}
+
+.totals-table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 10px;
+}
+
+.totals-table td {
+    padding: 5px;
+    border-bottom: 1px solid black;
+}
+
+.totals-table tr:last-child td {
+    border-bottom: none;
+}
+
+.totals-table .label {
+    width: 50%;
+}
+
+.totals-table .value {
+    text-align: right;
+    border-left: 1px solid black;
+}
+
+.totals-table .total-row {
+    background: var(--light-blue);
+    font-weight: bold;
+}
+
+/* Términos y Notas */
+.terms-area {
+    margin-top: 20px;
+    display: flex;
+    gap: 10px;
+    font-size: 10px;
+}
+
+.terms-box {
+    width: 60%;
+    border: 1px solid black;
+}
+
+.terms-header {
+    background: var(--primary-blue);
+    color: white;
+    padding: 3px 5px;
+    font-weight: bold;
+}
+
+.terms-content {
+    padding: 5px;
+}
+
+.signature-line {
+    margin-top: 20px;
+    border-top: 1px solid black;
+    display: inline-block;
+    padding-top: 5px;
+}
+
+.terms-note {
+    width: 40%;
+    padding: 5px;
+}
+
+/* Footer */
+.footer-note {
+    margin-top: 30px;
+    text-align: center;
+    font-size: 10px;
+}
+
+.bold-italic {
+    font-weight: bold;
+    font-style: italic;
+    margin-top: 5px;
+    font-size: 11px;
+}
+
+/* Botón de eliminar (oculto en impresión) */
+.delete-btn {
+    background: #dc3545;
+    color: white;
+    border: none;
+    border-radius: 3px;
+    padding: 2px 5px;
+    cursor: pointer;
+    font-size: 10px;
+    margin-top: 5px;
+}
+
+@media print {
+    .no-print {
+        display: none !important;
+    }
+    .app-layout {
+        padding: 0;
+        margin: 0;
+    }
+    .preview-panel {
+        padding: 0;
+    }
+    .pdf-document {
+        box-shadow: none;
+        padding: 0;
+        width: 100%;
+    }
+    .delete-btn {
+        display: none !important;
+    }
+}
